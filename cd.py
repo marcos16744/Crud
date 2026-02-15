@@ -28,17 +28,13 @@ def adicionar_usuario(email,nome,cpf,senha):
     return 'usuarios cadastrado com sucesso'
 
 
+def autenticar_usuario(email, senha):
+    usuario =Cadastro_usarios.get(email)
 
+    if usuario and usuario["senha"] == senha:
+        return f"Login realizado! Bem vindo {usuario['nome']}"
 
-
-def autenticar_usuario(email,senha):
-    if email in Cadastro_usarios:
-        usuario=Cadastro_usarios[email]
-        
-        if usuario['senha']==senha:
-            return f'Login realizado com sucesso Bem vindo {usuario["nome"]}'
-    
-    return 'Nao foi possivel realizar o login'
+    return "Email ou senha incorreta"
 
 
 
