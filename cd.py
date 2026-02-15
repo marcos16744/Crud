@@ -1,26 +1,42 @@
 Cadastro_usarios={
     'carlos@gmail.com':{
-        'Nome':'Carlos',
-        'CPF':'1339394',
+        'nome':'Carlos',
+        'cpf':'1339394',
         'senha':'1234'
         },
         'jose@gmail.com':{
-        'Nome':'jose',
-        'CPF':'1338898',
+        'nome':'jose',
+        'cpf':'1338898',
         'senha':'1235'
         },
         'anaclara@gmail.com':
-        {'Nome':'ana clara',
-        'CPF':'34332432',
+        {'nome':'ana clara',
+        'cpf':'34332432',
        'senha':'434243242'
        },}
                               
-def autenticar_usario(email,senha):
+
+def adicionar_usuario(email,nome,cpf,senha):
+    if email in Cadastro_usarios:
+        return 'Email já cadastrado'
+    
+    Cadastro_usarios[email]={
+        'nome':nome,
+        'cpf':cpf,
+        'senha':senha
+    }
+    return 'usuarios cadastrado com sucesso'
+
+
+
+
+
+def autenticar_usuario(email,senha):
     if email in Cadastro_usarios:
         usuario=Cadastro_usarios[email]
         
         if usuario['senha']==senha:
-            return f'Login realizado com sucesso Bem vindo {usuario['Nome']}'
+            return f'Login realizado com sucesso Bem vindo {usuario["nome"]}'
     
     return 'Nao foi possivel realizar o login'
 
@@ -28,13 +44,24 @@ def autenticar_usario(email,senha):
 
 while True:
     
-    escolha=input('deseja verificar seu login?')
-    if escolha =='sim':
+    escolha=input('deseja verificar seu login ou o solicitar o cadastro?')
+    if escolha =='Login':
         email=input('digite seu email')
         
         senha=input('digite sua senha:')
-        print(autenticar_usario(email,senha))
+        print(autenticar_usuario(email,senha))
    
+
+
+    if escolha == 'Cadastro':
+        email = input('Email: ')
+        nome = input('Nome: ')
+        cpf = input('CPF: ')
+        senha = input('Senha: ')
+
+        print(adicionar_usuario(email, nome, cpf, senha))
+       
+        
 
 
 
