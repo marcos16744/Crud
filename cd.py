@@ -42,9 +42,40 @@ def autenticar_usuario(email,senha):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+def deletar_usuario(email):
+    if email in Cadastro_usarios:
+        del Cadastro_usarios[email]
+        return "Usuário deletado com sucesso"
+    return "Usuário não encontrado"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 while True:
+
     
-    escolha=input('deseja verificar seu login ou o solicitar o cadastro?')
+    escolha=input('deseja verificar seu login ou o solicitar o cadastro ou deletar?')
     if escolha =='Login':
         email=input('digite seu email')
         
@@ -53,7 +84,7 @@ while True:
    
 
 
-    if escolha == 'Cadastro':
+    if escolha == 'cadastro':
         email = input('Email: ')
         nome = input('Nome: ')
         cpf = input('CPF: ')
@@ -62,7 +93,9 @@ while True:
         print(adicionar_usuario(email, nome, cpf, senha))
        
         
-
+    if escolha=='deletar':
+        email=input('digite o email que deseja deletar:')
+        print(deletar_usuario(email))
 
 
                               
