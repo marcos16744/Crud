@@ -37,10 +37,6 @@ def adicionar_usuario(id, nome, email, senha, cpf,ativo): #funçao creat
 
 
 
-print(usuarios)
-print(adicionar_usuario(4,'jose','jose@gmail.com','1144','4354343','ativo'))
-print(usuarios)
-
 
 
 
@@ -52,21 +48,15 @@ def buscar_usuario(id): #funçao read
 
 
 
-print(usuarios)
-print(buscar_usuario(2))
 
 
 
-
-def atualizar_senha(id, nova_senha): #funçao update
+def atualizar_senha(id,nova_senha): #funçao update
     if id not in  usuarios:
         return 'Erro'
-    usuarios[id]['senha']= nova_senha
+    usuarios[id]['senha']=nova_senha
     return 'senha atualizada com sucesso'
 
-print(usuarios)
-print(atualizar_senha(4,'mangaratiba'))
-print(usuarios)
 
 
 def atualizar_usuario(id, campo, novo_valor): #funçao update mais geral
@@ -87,7 +77,32 @@ def deletar_usuario(id): #funçao delet
     return 'usuario nao encontrado'
 
 
-print(usuarios)
-print(deletar_usuario(2))
-print(usuarios)
+while True:
+    print('1-adicionar|2-buscar|3-atualizar|4-deletar|5-sair')
+    escolha=input('escolha:')
+    if escolha=='1':
+        id=int(input('digite o id'))
+        nome=input('digite seu nome')
+        email=input('digite seu email')
+        senha=input('digite sua senha')
+        cpf=input('digite seu cpf')
+        ativo=input('digite seu status')
+        print(adicionar_usuario(id, nome, email, senha, cpf,ativo))
+    
+    if escolha=='2':
+        id=int(input('qual o seu id'))
+        print(buscar_usuario(id))
+
+    if escolha=='3':
+        id =int(input('Digite o id: '))
+        nova_senha=input('Digite a nova senha: ')
+        print(atualizar_senha(id, nova_senha))
+
+    if escolha=='4':
+        id=int(input('Digite o id: '))
+        print(deletar_usuario(id))
+
+    if escolha=='5':
+        break
+
 
