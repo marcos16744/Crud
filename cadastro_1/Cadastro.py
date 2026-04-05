@@ -21,6 +21,20 @@ usuarios={
            },}
 
 
+def cadastra_usuario(nome, email,senha ,celular):
+    novo_id=max(usuarios.keys())+1
+
+
+    usuarios[novo_id]={
+        'nome':nome,
+        'email':email,
+        'senha':senha,
+        'celular':celular
+    }
+
+    return'usuario cadastrado com sucesso'
+
+
 def verificar_login(email_digitado,senha_digitada):
     for id_usuarios,dados in usuarios.items():
         if dados['email']==email_digitado and dados['senha']== senha_digitada:
@@ -34,20 +48,6 @@ def buscar_email(email):
         if dados['email']==email:
             return dados
     return None
-
-
-def cadastra_usuario(nome, email,senha ,celular):
-    novo_id=max(usuarios.keys())+1
-
-
-    usuarios[novo_id]={
-        'nome':nome,
-        'email':email,
-        'senha':senha,
-        'celular':celular
-    }
-
-    return'usuario cadastrado com sucesso'
 
 
 
@@ -81,7 +81,4 @@ while True:
 
     elif opçao=='3':
         break
-
-        
-
-
+    
